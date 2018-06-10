@@ -76,27 +76,6 @@ if (isDev) {
         },
         hot: true
     }
-} else {
-    config.output.filename = '[name].[hash:8].js'
-    config.module.rules.push({
-        test: /\.styl/,
-        use: ExtractPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-                'css-loader',
-                {
-                    loader: 'postcss-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                },
-                'stylus-loader'
-            ]
-        })
-    })
-    config.plugins.push(
-        new ExtractPlugin('styles.[contentHash:8].css')
-    )
 }
 
 module.exports = config
